@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-md-7">
+        <app-regions-list></app-regions-list>
+    </div>
+    <div class="col-md-5">
+        <app-region-detail
+            *ngIf="selectedRegion; else infoText"
+            [region]="selectedRegion">
+        </app-region-detail>
+        <ng-template #infoText>
+            <p>Please select a region</p>
+        </ng-template>
+    </div>
+</div>

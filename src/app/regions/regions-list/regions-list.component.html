@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-success">New Region</button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-md-12">
+        <app-regions-item 
+        *ngFor="let regionElement of regions"
+        [region]="regionElement"></app-regions-item>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-xs-10">
+        <app-city-edit></app-city-edit>
+        <hr>
+        <ul class="list-group">
+            <a 
+            class="list-group-item" 
+            style="cursor: pointer"
+            *ngFor="let city of cities"
+            >
+            {{ city.name }}
+            </a>
+        </ul>
+    </div>
+</div>
