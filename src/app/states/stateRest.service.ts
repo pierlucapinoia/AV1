@@ -66,7 +66,8 @@ export class StateRestService {
         return this.http
             .delete(this.jsonReader.getJsonAttrib("backEndBaseUrl") + 
                 this.jsonReader.getJsonAttrib("backEndStatesList") + 
-                "/" + id.toString());
+                "/" + id.toString(),
+                { responseType: 'text'});
     }
 
     public findAllStatesWithRegions() {
