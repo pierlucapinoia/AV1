@@ -9,6 +9,7 @@ import { RegionService } from '../../region.service';
 })
 export class RegionsItemComponent implements OnInit {
   @Input() region: Region;
+  @Input() index: number;
 
   constructor(private regionService: RegionService) { }
 
@@ -19,5 +20,4 @@ export class RegionsItemComponent implements OnInit {
     this.regionService.regionSelected.emit(this.region);
   }
   
-
 }

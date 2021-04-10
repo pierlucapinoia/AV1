@@ -6,8 +6,8 @@
             <a 
             class="list-group-item" 
             style="cursor: pointer"
-            *ngFor="let city of cities"
-            >
+            *ngFor="let city of cities; let i = index"
+            (click)="onEditCity(i)">
             {{ city.name }}
             </a>
         </ul>

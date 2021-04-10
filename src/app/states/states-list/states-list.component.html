@@ -1,13 +1,15 @@
 <div class="row">
     <div class="col-md-12">
-        <button class="btn btn-success">New State</button>
+        <button class="btn btn-success" (click)="onNewState()">New State</button>
     </div>
 </div>
 <hr>
 <div class="row">
     <div class="col-md-12">
         <app-states-item 
-        *ngFor="let stateElement of states"
-        [state]="stateElement"></app-states-item>
+        *ngFor="let stateElement of states; let i = index"
+        [state]="stateElement"
+        [index]="i"
+        (stateToDelete)="onDeleteState($event)"></app-states-item>
     </div>
 </div>

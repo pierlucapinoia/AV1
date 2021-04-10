@@ -3,12 +3,13 @@
         <app-regions-list></app-regions-list>
     </div>
     <div class="col-md-5">
-        <app-region-detail
+        <!-- <app-region-detail
             *ngIf="selectedRegion; else infoText"
             [region]="selectedRegion">
         </app-region-detail>
         <ng-template #infoText>
             <p>Please select a region</p>
-        </ng-template>
+        </ng-template> -->
+        <router-outlet></router-outlet>
     </div>
 </div>

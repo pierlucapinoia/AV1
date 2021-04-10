@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { State } from '../../state.model';
-import { StateService } from '../../state.service';
 
 @Component({
   selector: 'app-states-item',
@@ -9,16 +8,21 @@ import { StateService } from '../../state.service';
 })
 export class StatesItemComponent implements OnInit {
   @Input() state: State;
-  // @Output() stateSelected = new EventEmitter<void>();
+  @Output() stateToDelete = new EventEmitter<number>();
+  @Input() index: number;
 
-  constructor(private stateService: StateService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  onSelected() {
-    // this.stateSelected.emit();
-    this.stateService.stateSelected.emit(this.state);
+  // onSelected() {
+  //   // this.stateSelected.emit();
+  //   this.stateService.stateSelected.emit(this.state);
+  // }
+
+  onDeleteClick() {
+    this.stateToDelete.emit(this.state.idState);
   }
 
 }

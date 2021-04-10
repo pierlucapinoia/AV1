@@ -1,0 +1,124 @@
+<div class="row">
+    <div class="col-lg-12">
+        <select class="form-control" (change)="onChangeSelect($event.target.value)" [(ngModel)]="selectState">
+            <option value="">Select a state</option>
+            <option *ngFor="let stateSel of statesList" 
+                    value="{{stateSel.name}}">{{ stateSel.name }}</option>
+        </select>
+    </div>
+</div>
+<div class="row">
+   <div class="col-lg-12">
+       <form [formGroup]="stateForm" (ngSubmit)="onSubmit()" [hidden]="!stateSelected">
+          <!-- <div class="row">
+              <div class="col-lg-12">
+                  <div class="form-group">
+                      <label for="name">Name</label>
+                      <input
+                        type="text"
+                        id="name"
+                        formControlName="name"
+                        class="form-control">
+                  </div>
+              </div>
+          </div> -->
+          <!-- <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label for="imagePath">Image URL</label>
+                    <input
+                      type="text"
+                      id="image"
+                      class="form-control">
+                </div>
+            </div>
+        </div> -->
+        <div class="row">
+            <div class="col-lg-12" formArrayName="regions">
+                <div 
+                class="row"
+                *ngFor="let regionCtrl of controls; let i = index"
+                [formGroupName]="i"
+                style="margin-top:10px">
+                    <div class="col-lg-8">
+                        <input
+                        type="text"
+                        class="form-control"
+                        formControlName="regions">
+                    </div>
+                    <div class="col-lg-4">
+                        <button class="btn btn-danger">X</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label for="stateCapitalCity">Capital</label>
+                        <input
+                          type="text"
+                          id="stateCapitalCity"
+                          formControlName="stateCapitalCity"
+                          class="form-control">
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="language">Language</label>
+                        <input
+                          type="text"
+                          id="language"
+                          formControlName="language"
+                          class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label for="continent">Continent</label>
+                        <input
+                          type="text"
+                          id="continent"
+                          formControlName="continent"
+                          class="form-control">
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="currency">Currency</label>
+                        <input
+                          type="text"
+                          id="currency"
+                          formControlName="currency"
+                          class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label for="population">Population</label>
+                        <input
+                          type="text"
+                          id="population"
+                          formControlName="population"
+                          class="form-control">
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="borders">Borders</label>
+                        <input
+                          type="text"
+                          id="borders"
+                          formControlName="borders"
+                          class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-12">
+                <button 
+                type="submit" 
+                class="btn btn-success">Save</button>
+                <button type="button" class="btn btn-danger">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div> 
+

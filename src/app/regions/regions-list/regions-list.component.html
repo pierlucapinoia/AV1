@@ -1,13 +1,31 @@
 <div class="row">
-    <div class="col-xs-12">
-        <button class="btn btn-success">New Region</button>
+    <div class="col-md-12">
+        <label for="stateSelectForRegion">Please select the state</label>
+        <select class="form-control" (change)="onChangeSelect($event.target.value)" [(ngModel)]="stateSelectForRegion">
+            <option value="">Select a state</option>
+            <option *ngFor="let stateSel of statesList" 
+                    value="{{stateSel.idState}}">{{ stateSel.name }}</option>
+        </select>
     </div>
 </div>
 <hr>
 <div class="row">
     <div class="col-md-12">
-        <app-regions-item 
-        *ngFor="let regionElement of regions"
-        [region]="regionElement"></app-regions-item>
+        <form [hidden]="!stateSelected">
+            <div class="row">
+                <div class="col-xs-12">
+                    <button class="btn btn-success" (click)="onNewRegion()">New Region</button>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <app-regions-item 
+                    *ngFor="let regionElement of regionsList; let i = index"
+                    [region]="regionElement"
+                    [index]="i"></app-regions-item>
+                </div>
+            </div>
+        </form>
     </div>
 </div>

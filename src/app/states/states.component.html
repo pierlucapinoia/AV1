@@ -1,14 +1,15 @@
 <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-5">
         <app-states-list></app-states-list>
     </div>
-    <div class="col-md-5">
-        <app-states-detail
+    <div class="col-md-7">
+        <!-- <app-states-detail
         *ngIf="selectedState; else infoText"
         [state]="selectedState"></app-states-detail>
         <ng-template #infoText>
             <p>Please select a state</p>
-        </ng-template>
+        </ng-template> -->
+        <router-outlet></router-outlet>
     </div>
 </div>
 

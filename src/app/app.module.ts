@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {HttpClientModule} from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -11,12 +12,16 @@ import { CitiesComponent } from './cities/cities.component';
 import { StatesDetailComponent } from './states/states-detail/states-detail.component';
 import { StatesItemComponent } from './states/states-list/states-item/states-item.component';
 import { CityEditComponent } from './cities/city-edit/city-edit.component';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { DropdownDirective } from './shared/dropdown.directive';
 import { CityService } from './cities/city.service';
 import { RegionDetailComponent } from './regions/region-detail/region-detail.component';
 import { RegionsItemComponent } from './regions/regions-list/regions-item/regions-item.component';
 import { AppRoutingModule } from './app-routing.module';
+import { StateStartComponent } from './states/state-start/state-start.component';
+import { StateEditComponent } from './states/state-edit/state-edit.component';
+import { RegionStartComponent } from './regions/region-start/region-start.component';
+import { RegionEditComponent } from './regions/region-edit/region-edit.component';
 
 @NgModule({
   declarations: [
@@ -32,12 +37,18 @@ import { AppRoutingModule } from './app-routing.module';
     CityEditComponent,
     DropdownDirective,
     RegionDetailComponent,
-    RegionsItemComponent
+    RegionsItemComponent,
+    StateStartComponent,
+    StateEditComponent,
+    RegionStartComponent,
+    RegionEditComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    ReactiveFormsModule,
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [CityService],
   bootstrap: [AppComponent]

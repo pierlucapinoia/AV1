@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CityEditComponent } from './city-edit.component';
+import { RegionEditComponent } from './region-edit.component';
 
-describe('CityEditComponent', () => {
-  let component: CityEditComponent;
-  let fixture: ComponentFixture<CityEditComponent>;
+describe('RegionEditComponent', () => {
+  let component: RegionEditComponent;
+  let fixture: ComponentFixture<RegionEditComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CityEditComponent ]
+      declarations: [ RegionEditComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CityEditComponent);
+    fixture = TestBed.createComponent(RegionEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

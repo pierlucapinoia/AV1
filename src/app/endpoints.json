@@ -1,0 +1,10 @@
+{
+    "statesList" : "https://restcountries.eu/rest/v2/all?fields=name",
+    "stateInfosLink" : "https://restcountries.eu/rest/v2/name/",
+    "stateInfosParams" : "?fields=capital;currencies;borders;region;population;languages",
+    "backEndBaseUrl" : "http://localhost:8080",
+    "backEndStatesList": "/states",
+    "backEndRegionsList": "/regions",
+    "regionsByState": "/state/",
+    "findAllStatesWithRegions": "/statesWithRegion"
+}
