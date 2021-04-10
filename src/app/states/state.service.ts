@@ -44,7 +44,7 @@ export class StateService {
 
     deleteState(id: number) {
         this.stateRest.deleteState(id)
-        .subscribe((res) => {
+        .subscribe((res: String) => {
             console.log(res);
             this.needUpdate.next(true);
         })
