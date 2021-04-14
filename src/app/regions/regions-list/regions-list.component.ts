@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { $ } from 'protractor';
 import { State } from 'src/app/states/state.model';
 import { StateService } from 'src/app/states/state.service';
 import { Region } from '../region.model';
@@ -17,12 +18,9 @@ export class RegionsListComponent implements OnInit {
   statesList: State[];
   stateSelected = false;
   regionForm: FormGroup;
-  stateSelectForRegion: any;
   idStateSelected: number;
   nameStateSelected: String;
-  prova: State[];
-
-
+  isSelectDisabled: boolean;
 
   constructor(private regionService: RegionService,
               private stateService: StateService,
@@ -30,10 +28,13 @@ export class RegionsListComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    console.log('init')
+    this.isSelectDisabled = false;
     this.statesList = this.stateService.getStates();
 
     this.regionService.needUpdate.subscribe((needUpdate: Boolean) => {
       if(needUpdate) {
+        this.isSelectDisabled = false;
         this.regionsList = this.regionService.getRegionsByStateId(this.idStateSelected);
       }   
     })
@@ -43,7 +44,6 @@ export class RegionsListComponent implements OnInit {
     if(value === "")
       this.stateSelected = false
     else {
-      console.log(value);
       this.stateSelected = true;
       this.idStateSelected = +value;
       this.nameStateSelected = this.statesList.filter(x => x.idState === +value)[0].name;
@@ -52,8 +52,9 @@ export class RegionsListComponent implements OnInit {
   }
 
   onNewRegion() {
-    this.router.navigate(['new'],  {relativeTo: this.route, queryParams: {idStateSelected: this.idStateSelected, stateName: this.nameStateSelected}});
-    // this.router.navigate(['new'],  {relativeTo: this.route});
+    this.isSelectDisabled = true;
+    this.router.navigate(['new'],  {relativeTo: this.route, 
+      queryParams: {idStateSelected: this.idStateSelected, stateName: this.nameStateSelected}});
   }
 
 }
