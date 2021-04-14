@@ -116,7 +116,6 @@ export class StateEditComponent implements OnInit, OnDestroy {
           });
         })
     }
-      
   }
 
   onCancelClick() {
