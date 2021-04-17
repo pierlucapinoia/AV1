@@ -20,8 +20,6 @@ export class RegionRestService {
     }
 
     public addRegionPost(idState: number, stateName: String, regionName: String) {
-        console.log("idState " + idState);
-        console.log("regionName " + regionName);
         return this.http
             .post(this.jsonReader.getJsonAttrib("backEndBaseUrl") + this.jsonReader.getJsonAttrib("backEndRegionsList"), {
                 "state": {
@@ -31,6 +29,13 @@ export class RegionRestService {
                 "regionName" : regionName
             })
             .pipe(map(() => {}));
+    }
+
+    public deleteRegionById(idRegion: number) {
+        return this.http
+            .delete(this.jsonReader.getJsonAttrib("backEndBaseUrl") + this.jsonReader.getJsonAttrib("backEndRegionsList")
+                + "/" + idRegion.toString(),
+                { responseType: 'text'});
     }
 
 }
