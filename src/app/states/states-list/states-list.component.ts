@@ -26,10 +26,6 @@ export class StatesListComponent implements OnInit, OnDestroy {
     })
   }
 
-  // onStateSelected(state: State) {
-  //   this.stateWasSelected.emit(state);
-  // }
-
   onNewState() {
     this.router.navigate(['new'], {relativeTo: this.route});
   }

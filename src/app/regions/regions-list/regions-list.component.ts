@@ -56,4 +56,8 @@ export class RegionsListComponent implements OnInit {
     // this.router.navigate(['new'],  {relativeTo: this.route});
   }
 
+  onDeleteRegion(idRegion: number) {
+    this.regionService.deleteRegion(idRegion);
+  }
+
 }

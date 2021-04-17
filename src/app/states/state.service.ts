@@ -23,7 +23,6 @@ export class StateService {
                     this.states.push(new State(response[i].idState, response[i].name, null, ''));
                 }
             });
-            // console.log(this.states);
         return this.states;
     }
 
@@ -44,8 +43,7 @@ export class StateService {
 
     deleteState(id: number) {
         this.stateRest.deleteState(id)
-        .subscribe((res) => {
-            console.log(res);
+        .subscribe((res: String) => {
             this.needUpdate.next(true);
         })
     }

@@ -64,23 +64,16 @@ export class StateRestService {
 
     public deleteState(id: number) {
         return this.http
-            .delete(this.jsonReader.getJsonAttrib("backEndBaseUrl") + 
-                this.jsonReader.getJsonAttrib("backEndStatesList") + 
-                "/" + id.toString());
+        .delete(this.jsonReader.getJsonAttrib("backEndBaseUrl") + 
+            this.jsonReader.getJsonAttrib("backEndStatesList") + 
+            "/" + id.toString(),
+            { responseType: 'text'});
     }
 
     public findAllStatesWithRegions() {
         return this.http
             .get(this.jsonReader.getJsonAttrib("backEndBaseUrl") + this.jsonReader.getJsonAttrib("backEndStatesList") + 
                 this.jsonReader.getJsonAttrib("findAllStatesWithRegions"))
-                // .pipe(map((responseData) => {
-                //     let statesList = [];
-                //     for(const i in responseData) {
-                //         statesList.push(responseData[i]);
-                //     }
-                    
-                //     return statesList;
-                // }))
     }
 
 }
