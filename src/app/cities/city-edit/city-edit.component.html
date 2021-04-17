@@ -1,15 +1,19 @@
 <div class="row">
     <div class="col-lg-6">
         <label for="stateSelectForCity">Please select the state</label>
-        <select class="form-control" (change)="onChangeStateSelect($event.target.value)" [(ngModel)]="stateSelectForCity">
+        <select class="form-control" 
+                (change)="onChangeStateSelect($event.target.value)" 
+                [(ngModel)]="stateSelectForCity">
             <option value="">Select a state</option>
             <option *ngFor="let stateSel of statesList" 
                     value="{{stateSel.idState}}">{{ stateSel.name }}</option>
         </select>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6" [hidden]="hideRegionSelect">
         <label for="regionSelectForCity">Please select the region</label>
-        <select class="form-control" (change)="onChangeRegionSelect($event.target.value)" [(ngModel)]="regionSelectForCity">
+        <select class="form-control" 
+                (change)="onChangeRegionSelect($event.target.value)" 
+                [(ngModel)]="regionSelectForCity">
             <option value="">Select a region</option>
             <option *ngFor="let regionSel of regionsList" 
                     value="{{regionSel.idRegion}}">{{ regionSel.name }}</option>
@@ -18,7 +22,7 @@
 </div>
 <div class="row">
     <div class="col-lg-12">
-        <form (ngSubmit)="onSubmitCity(f)" #f="ngForm">
+        <form (ngSubmit)="onSubmitCity(f)" #f="ngForm" [hidden]="hideCitiesForm">
             <div class="row">
                 <div class="col-sm-5 form-group">
                     <label for="name">Name</label>

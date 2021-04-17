@@ -1,6 +1,9 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subject, Subscription, throwError } from 'rxjs';
+import { Region } from 'src/app/regions/region.model';
+import { RegionService } from 'src/app/regions/region.service';
+import { State } from 'src/app/states/state.model';
 import { StateService } from 'src/app/states/state.service';
 import { City } from '../cities.model';
 import { CityService } from '../city.service';
@@ -11,25 +14,27 @@ import { CityService } from '../city.service';
   styleUrls: ['./city-edit.component.css']
 })
 export class CityEditComponent implements OnInit, OnDestroy {
-  // @ViewChild('nameInput', {static: false}) nameInputRef: ElementRef;
-  // @ViewChild('inhabitantsInput', {static: false}) inhabitantsInputRef: ElementRef;
-  // @Output() cityAdded = new EventEmitter<City>();
   subscription: Subscription;
   editMode = false;
   editedItemIndex: number;
   editedCity: City;
   stateSelectForCity: any;
   regionSelectForCity: any;
-  statesList = [];
-  regionsList = [];
+  statesList: State[];
+  regionsList: Region[];
+  hideRegionSelect: boolean;
+  hideCitiesForm: boolean;
   @ViewChild('f', {static: false}) slForm: NgForm;
 
   error = new Subject<string>();
 
   constructor(private cityService: CityService,
+              private regionService: RegionService,
               private stateService: StateService) { }
 
   ngOnInit(): void {
+    this.hideRegionSelect = true;
+    this.hideCitiesForm = true;
     this.subscription = this.cityService.startedEditing
       .subscribe(
         (index: number) => {
@@ -59,8 +64,6 @@ export class CityEditComponent implements OnInit, OnDestroy {
     } else {
       this.cityService.addCity(newCity);
     }
-    //this.cityService.addCity(newCity);
-    // this.cityAdded.emit(newCity);
     this.editMode = false;
     form.reset();
   }
@@ -79,12 +82,22 @@ export class CityEditComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  onChangeStateSelect(value: string) {
-
+  onChangeStateSelect(value: String) {
+    if(value === "") {
+      this.hideRegionSelect = true;
+    } else {
+      this.hideRegionSelect = false;
+      this.regionsList = this.regionService.getRegionsByStateId(+value);
+      console.log(this.regionsList);
+    }
   }
 
   onChangeRegionSelect(value: string) {
-
+    if(value === "") {
+      this.hideCitiesForm = true;
+    } else {
+      this.hideCitiesForm = false;
+    }
   }
 
 

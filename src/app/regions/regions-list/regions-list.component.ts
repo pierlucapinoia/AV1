@@ -43,7 +43,6 @@ export class RegionsListComponent implements OnInit {
     if(value === "")
       this.stateSelected = false
     else {
-      console.log(value);
       this.stateSelected = true;
       this.idStateSelected = +value;
       this.nameStateSelected = this.statesList.filter(x => x.idState === +value)[0].name;
