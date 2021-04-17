@@ -116,7 +116,11 @@ export class StateEditComponent implements OnInit, OnDestroy {
           });
         })
     }
-      
+  }
+
+  onCancelClick() {
+    this.selectState = "";
+    this.onChangeSelect("");
   }
 
   ngOnDestroy() {

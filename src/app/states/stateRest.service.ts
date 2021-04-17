@@ -64,10 +64,10 @@ export class StateRestService {
 
     public deleteState(id: number) {
         return this.http
-        .delete(this.jsonReader.getJsonAttrib("backEndBaseUrl") + 
-            this.jsonReader.getJsonAttrib("backEndStatesList") + 
-            "/" + id.toString(),
-            { responseType: 'text'});
+            .delete(this.jsonReader.getJsonAttrib("backEndBaseUrl") + 
+                this.jsonReader.getJsonAttrib("backEndStatesList") + 
+                "/" + id.toString(),
+                { responseType: 'text'});
     }
 
     public findAllStatesWithRegions() {

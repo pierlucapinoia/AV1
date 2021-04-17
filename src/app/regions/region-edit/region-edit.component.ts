@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RegionService } from '../region.service';
 
 @Component({
@@ -12,7 +12,11 @@ export class RegionEditComponent implements OnInit, OnDestroy {
 
   idStateSelected: number;
   stateNameSelected: String;
-  constructor(private route: ActivatedRoute, private regionService: RegionService) { }
+  regionNameInput: any;
+
+  constructor(private route: ActivatedRoute, 
+              private regionService: RegionService,
+              private router: Router) { }
 
 
   ngOnInit(): void {
@@ -24,7 +28,15 @@ export class RegionEditComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(form: NgForm) {
-    this.regionService.addRegion(this.idStateSelected, this.stateNameSelected, form.value.regionNameInput)
+    this.regionService.addRegion(this.idStateSelected, this.stateNameSelected, form.value.regionNameInput);
+    this.onCancelClick(form);
+    
+  }
+
+  onCancelClick(form: NgForm) {
+    form.reset();
+    this.regionService.needUpdate.next(true);
+    this.router.navigate(['../'],  {relativeTo: this.route});
   }
 
   ngOnDestroy(): void {
