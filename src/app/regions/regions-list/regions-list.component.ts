@@ -57,4 +57,8 @@ export class RegionsListComponent implements OnInit {
       queryParams: {idStateSelected: this.idStateSelected, stateName: this.nameStateSelected}});
   }
 
+  onDeleteRegion(idRegion: number) {
+    this.regionService.deleteRegion(idRegion);
+  }
+
 }

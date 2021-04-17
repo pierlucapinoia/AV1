@@ -31,8 +31,14 @@ export class RegionService {
     }
 
     addRegion(idState: number, stateName: String, regionName: String) {
-        console.log(stateName)
         this.regionRestService.addRegionPost(idState, stateName, regionName)
             .subscribe((res) => this.needUpdate.next(true));
+    }
+
+    deleteRegion(idRegion: number) {
+        this.regionRestService.deleteRegionById(idRegion)
+        .subscribe((res: String) => {
+            this.needUpdate.next(true);
+        })
     }
 }

@@ -74,14 +74,6 @@ export class StateRestService {
         return this.http
             .get(this.jsonReader.getJsonAttrib("backEndBaseUrl") + this.jsonReader.getJsonAttrib("backEndStatesList") + 
                 this.jsonReader.getJsonAttrib("findAllStatesWithRegions"))
-                // .pipe(map((responseData) => {
-                //     let statesList = [];
-                //     for(const i in responseData) {
-                //         statesList.push(responseData[i]);
-                //     }
-                    
-                //     return statesList;
-                // }))
     }
 
 }

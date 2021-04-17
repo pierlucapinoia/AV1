@@ -2,5 +2,5 @@ import { City } from "../cities/cities.model";
 
 export class Region {
     
-    constructor(public regionName: string, public cities: City[]){}
+    constructor(public idRegion: number, public regionName: string, public cities: City[]){}
 }

@@ -26,7 +26,8 @@
                     <app-regions-item 
                     *ngFor="let regionElement of regionsList; let i = index"
                     [region]="regionElement"
-                    [index]="i"></app-regions-item>
+                    [index]="i"
+                    (regionToDelete)="onDeleteRegion($event)"></app-regions-item>
                 </div>
             </div>
         </form>
