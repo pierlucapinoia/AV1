@@ -99,7 +99,4 @@ export class CityEditComponent implements OnInit, OnDestroy {
       this.hideCitiesForm = false;
     }
   }
-
-
-
 }

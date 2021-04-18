@@ -16,7 +16,7 @@
                 [(ngModel)]="regionSelectForCity">
             <option value="">Select a region</option>
             <option *ngFor="let regionSel of regionsList" 
-                    value="{{regionSel.idRegion}}">{{ regionSel.name }}</option>
+                    value="{{regionSel.idRegion}}">{{ regionSel.regionName }}</option>
         </select>
     </div>
 </div>
