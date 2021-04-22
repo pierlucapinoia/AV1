@@ -48,6 +48,7 @@ export class RegionsListComponent implements OnInit {
       this.idStateSelected = +value;
       this.nameStateSelected = this.statesList.filter(x => x.idState === +value)[0].name;
       this.regionsList = this.regionService.getRegionsByStateId(this.idStateSelected);
+      console.log(this.regionsList);
     }
   }
 
