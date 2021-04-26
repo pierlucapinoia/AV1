@@ -15,7 +15,7 @@ const appRoutes: Routes = [
     { path: 'states', component: StatesComponent, children: [
         {path:'', component: StateStartComponent},
         {path: 'new', component: StateEditComponent},
-        {path: ':id', component: StatesDetailComponent},
+        {path: ':id', component: StateEditComponent},
         {path: ':id/edit', component: StateEditComponent}
     ]},
     { path: 'regions', component: RegionsComponent, children: [

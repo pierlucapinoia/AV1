@@ -31,15 +31,14 @@ export class StateEditComponent implements OnInit, OnDestroy {
           this.initForm();
         }
       )
-
+    
     this.stateRestService.getStatesName()
       .subscribe((response) => {
         this.statesList = response;
     });
   }
-
+  
   onSubmit() {
-
     if(this.editMode)
       this.stateService.updateState(this.id, this.stateForm.get('population').value);
     else {
@@ -59,6 +58,18 @@ export class StateEditComponent implements OnInit, OnDestroy {
     let stateCurrency = '';
     let statePopulation = 0;
     let stateBorders = '';
+
+    this.stateForm = new FormGroup({
+      'name': new FormControl(stateName),
+      'regions': new FormControl({value:stateRegions, disabled:true}),
+      'lengthOfStay': new FormControl({value:statelengthOfStay, disabled:true}),
+      'stateCapitalCity': new FormControl({value:stateCapitalCity, disabled:true}),
+      'language': new FormControl({value:stateLanguage, disabled:true}),
+      'continent': new FormControl({value:stateContinent, disabled:true}),
+      'currency': new FormControl({value:stateCurrency, disabled:true}),
+      'population': new FormControl({value:statePopulation, disabled:true}),
+      'borders': new FormControl({value:stateBorders, disabled:true})
+    });
     
     if(this.editMode) {
       const state = this.stateService.getState(this.id);
@@ -74,22 +85,11 @@ export class StateEditComponent implements OnInit, OnDestroy {
           );
         }
       }
-
       statelengthOfStay = state.lengthOfStay;
 
+      this.stateSelected = true;
+      this.onChangeSelect(stateName);
     }
-
-    this.stateForm = new FormGroup({
-      'name': new FormControl(stateName),
-      'regions': new FormControl({value:stateRegions, disabled:true}),
-      'lengthOfStay': new FormControl({value:statelengthOfStay, disabled:true}),
-      'stateCapitalCity': new FormControl({value:stateCapitalCity, disabled:true}),
-      'language': new FormControl({value:stateLanguage, disabled:true}),
-      'continent': new FormControl({value:stateContinent, disabled:true}),
-      'currency': new FormControl({value:stateCurrency, disabled:true}),
-      'population': new FormControl({value:statePopulation, disabled:true}),
-      'borders': new FormControl({value:stateBorders, disabled:true})
-    });
   }
 
   get controls() { // a getter!
