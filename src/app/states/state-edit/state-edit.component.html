@@ -1,6 +1,9 @@
 <div class="row">
     <div class="col-lg-12">
-        <select class="form-control" (change)="onChangeSelect($event.target.value)" [(ngModel)]="selectState">
+        <select class="form-control" 
+                (change)="onChangeSelect($event.target.value)" 
+                [(ngModel)]="selectState" 
+                *ngIf="!editMode">
             <option value="">Select a state</option>
             <option *ngFor="let stateSel of statesList" 
                     value="{{stateSel.name}}">{{ stateSel.name }}</option>
@@ -88,7 +91,7 @@
             </div>
         </div>
         <hr>
-        <div class="row">
+        <div class="row" [hidden]="editMode">
             <div class="col-lg-12">
                 <button 
                 type="submit" 

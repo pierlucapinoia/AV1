@@ -16,11 +16,6 @@ export class StatesItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // onSelected() {
-  //   // this.stateSelected.emit();
-  //   this.stateService.stateSelected.emit(this.state);
-  // }
-
   onDeleteClick() {
     this.stateToDelete.emit(this.state.idState);
   }

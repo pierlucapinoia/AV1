@@ -9,7 +9,6 @@ import { StateService } from '../state.service';
   styleUrls: ['./states-list.component.css']
 })
 export class StatesListComponent implements OnInit, OnDestroy {
-  // @Output() stateWasSelected = new EventEmitter<State>();
   states: State[];
   
   constructor(private stateService: StateService,
