@@ -6,5 +6,6 @@
     "backEndStatesList": "/states",
     "backEndRegionsList": "/regions",
     "regionsByState": "/state/",
-    "findAllStatesWithRegions": "/statesWithRegion"
+    "findAllStatesWithRegions": "/statesWithRegion",
+    "backEndCitiesList": "/cities"
 }

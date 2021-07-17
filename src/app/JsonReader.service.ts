@@ -24,6 +24,8 @@ export class JsonReader {
                 return data.regionsByState;
             case "findAllStatesWithRegions":
                 return data.findAllStatesWithRegions;
+            case "backEndCitiesList":
+                return data.backEndCitiesList;
         }
     }
 }

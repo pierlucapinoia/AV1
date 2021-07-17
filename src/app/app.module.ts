@@ -22,6 +22,7 @@ import { StateStartComponent } from './states/state-start/state-start.component'
 import { StateEditComponent } from './states/state-edit/state-edit.component';
 import { RegionStartComponent } from './regions/region-start/region-start.component';
 import { RegionEditComponent } from './regions/region-edit/region-edit.component';
+import { RouteComponent } from './route/route.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { RegionEditComponent } from './regions/region-edit/region-edit.component
     StateStartComponent,
     StateEditComponent,
     RegionStartComponent,
-    RegionEditComponent
+    RegionEditComponent,
+    RouteComponent
   ],
   imports: [
     BrowserModule,

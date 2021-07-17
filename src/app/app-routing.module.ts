@@ -5,6 +5,7 @@ import { RegionDetailComponent } from "./regions/region-detail/region-detail.com
 import { RegionEditComponent } from "./regions/region-edit/region-edit.component";
 import { RegionStartComponent } from "./regions/region-start/region-start.component";
 import { RegionsComponent } from "./regions/regions.component";
+import { RouteComponent } from "./route/route.component";
 import { StateEditComponent } from "./states/state-edit/state-edit.component";
 import { StateStartComponent } from "./states/state-start/state-start.component";
 import { StatesDetailComponent } from "./states/states-detail/states-detail.component";
@@ -25,6 +26,7 @@ const appRoutes: Routes = [
         
     ]},
     { path: 'cities', component: CitiesComponent},
+    { path: 'routes', component: RouteComponent}
 ];
 
 @NgModule({

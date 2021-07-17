@@ -21,7 +21,7 @@ export class RegionService {
         this.regions = [];
         this.regionRestService.getRegionsByStateId(idState)
                 .subscribe((responseData) => {
-                    responseData.forEach(element => this.regions.push(element));
+                    responseData.forEach(element => {this.regions.push(element)});
                 });
         return this.regions;      
     }
