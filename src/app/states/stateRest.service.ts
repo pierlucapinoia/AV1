@@ -20,7 +20,7 @@ export class StateRestService {
                     }
                     
                     return statesList;
-                }))
+                }));
     }
 
     public getStateInfos(stateName: string) {

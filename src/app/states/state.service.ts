@@ -10,7 +10,7 @@ export class StateService {
     constructor (private stateRest: StateRestService) {}
 
     stateSelected = new Subject<State>();
-    needUpdate : BehaviorSubject<boolean> = new BehaviorSubject(false);
+    needUpdate = new BehaviorSubject(false);
 
     getStates() {
         //slice ritorna un'esatta copia dell'array

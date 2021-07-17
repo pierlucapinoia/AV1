@@ -1,7 +1,5 @@
 export class City {
-    public name: string;
 
-    constructor(name: string) {
-        this.name = name;
+    constructor(public idCity: number, public cityName: string) {
     }
 }

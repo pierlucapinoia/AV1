@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
 import { JsonReader } from "../JsonReader.service";
+import { Region } from "./region.model";
 
 export class RegionRestService {
 
@@ -14,21 +15,33 @@ export class RegionRestService {
                     let regionsList = [];
                     for(const i in responseData) {
                         regionsList.push(responseData[i]);
-                    }            
+                    }         
                     return regionsList;
                 }));
     }
 
     public addRegionPost(idState: number, stateName: String, regionName: String) {
+
+        let body = {
+                    "state": {
+                                "idState": idState,
+                                "stateName": stateName
+                            },
+                    "regionName" : regionName
+                    };
+        // return this.http
+        //     .post(this.jsonReader.getJsonAttrib("backEndBaseUrl") + this.jsonReader.getJsonAttrib("backEndRegionsList"), {
+        //         "state": {
+        //             idState,
+        //             stateName
+        //         },
+        //         "regionName" : regionName
+        //     })
+        //     .pipe(map(() => {}));
+
         return this.http
-            .post(this.jsonReader.getJsonAttrib("backEndBaseUrl") + this.jsonReader.getJsonAttrib("backEndRegionsList"), {
-                "state": {
-                    idState,
-                    stateName
-                },
-                "regionName" : regionName
-            })
-            .pipe(map(() => {}));
+        .post(this.jsonReader.getJsonAttrib("backEndBaseUrl") + this.jsonReader.getJsonAttrib("backEndRegionsList"), body)
+        .pipe(map(() => {}));
     }
 
     public deleteRegionById(idRegion: number) {

@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Subject, Subscription, throwError } from 'rxjs';
 import { Region } from 'src/app/regions/region.model';
 import { RegionService } from 'src/app/regions/region.service';
+import { RegionRestService } from 'src/app/regions/regionRest.service';
 import { State } from 'src/app/states/state.model';
 import { StateService } from 'src/app/states/state.service';
 import { City } from '../cities.model';
@@ -15,7 +16,6 @@ import { CityService } from '../city.service';
 })
 export class CityEditComponent implements OnInit, OnDestroy {
   subscription: Subscription;
-  editMode = false;
   editedItemIndex: number;
   editedCity: City;
   stateSelectForCity: any;
@@ -30,7 +30,8 @@ export class CityEditComponent implements OnInit, OnDestroy {
 
   constructor(private cityService: CityService,
               private regionService: RegionService,
-              private stateService: StateService) { }
+              private stateService: StateService,
+              private regionRestService: RegionRestService) { }
 
   ngOnInit(): void {
     this.hideRegionSelect = true;
@@ -39,18 +40,16 @@ export class CityEditComponent implements OnInit, OnDestroy {
       .subscribe(
         (index: number) => {
           this.editedItemIndex = index;
-          this.editMode = true;
           this.editedCity = this.cityService.getCity(index);
           this.slForm.setValue({
-            name: this.editedCity.name
+            name: this.editedCity.cityName
           })
         }, error => {
           this.error.next(error.message);
         }
       );
 
-      this.statesList = this.stateService.findAllStatesWithRegions();
-      console.log(this.statesList);
+    this.statesList = this.stateService.findAllStatesWithRegions();
   }
 
   
@@ -58,19 +57,29 @@ export class CityEditComponent implements OnInit, OnDestroy {
   onSubmitCity(form: NgForm) {
 
     const value = form.value;
-    const newCity = new City(value.name);
-    if(this.editMode) {
-      this.cityService.updateCity(this.editedItemIndex, newCity);
-    } else {
-      this.cityService.addCity(newCity);
-    }
-    this.editMode = false;
+    const regionId = this.regionSelectForCity;
+    const stateId = this.stateSelectForCity;
+
+    let idRegion: number;
+    let currentRegion: Region;
+    let currentRegions: Region[];
+    this.regionRestService.getRegionsByStateId(+stateId)
+      .subscribe((responseData) => {
+        responseData.forEach((element) => {
+          if(element.idRegion === +regionId) {
+            currentRegion = element;
+            console.log(currentRegion)
+            this.cityService.addCity("lllll")
+          }
+            
+        })
+      })
+
     form.reset();
   }
 
   onClear() {
     this.slForm.reset();
-    this.editMode = false;
   }
 
   onDelete() {

@@ -7,12 +7,14 @@ import { StateService } from '../states/state.service';
 import { StateRestService } from '../states/stateRest.service';
 import { City } from './cities.model';
 import { CityService } from './city.service';
+import { CityRestService } from './cityRest.service';
 
 @Component({
   selector: 'app-cities',
   templateUrl: './cities.component.html',
   styleUrls: ['./cities.component.css'],
-  providers: [StateService, JsonReader, StateRestService, RegionService, RegionRestService]
+  providers: [StateService, JsonReader, StateRestService, RegionService, RegionRestService, 
+              CityService, CityRestService]
 })
 export class CitiesComponent implements OnInit {
   cities: City[];
@@ -22,16 +24,16 @@ export class CitiesComponent implements OnInit {
 
   ngOnInit(): void {
     this.cities = this.cityService.getCities();
-    this.subscription = this.cityService.citiesChanged
-                        .subscribe(
-                          (cities: City[]) => {
-                            this.cities = cities;
-                          }
-                        )
+    // this.subscription = this.cityService.citiesChanged
+    //                     .subscribe(
+    //                       (cities: City[]) => {
+    //                         this.cities = cities;
+    //                       }
+    //                     )
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
   onEditCity(index: number) {
